@@ -19,30 +19,33 @@ class AddQuestion extends React.Component {
   }
   render() {
     return (
-      <div className="container bordered-container">
-        <h3 className="center">Would you rather?...</h3>
-        <form
-          onSubmit={(e) => {
-            this.onSubmit(e);
-          }}
-          className="center"
-        >
-          <input
-            onChange={(e) => this.onChange(e)}
-            name="textOne"
-            value={this.state.textOne}
-            required={true}
-            placeholder="Option one"
-          ></input>
-          <input
-            onChange={(e) => this.onChange(e)}
-            name="textTwo"
-            required={true}
-            placeholder="Option two"
-            value={this.state.textTwo}
-          ></input>
-          <button type="submit">Add</button>
-        </form>
+      <div>
+        <h1 className="center">Add new question</h1>
+        <div className="container bordered-container">
+          <h3 className="center">Would you rather?...</h3>
+          <form
+            onSubmit={(e) => {
+              this.onSubmit(e);
+            }}
+            className="center"
+          >
+            <input
+              onChange={(e) => this.onChange(e)}
+              name="textOne"
+              value={this.state.textOne}
+              required={true}
+              placeholder="Option one"
+            ></input>
+            <input
+              onChange={(e) => this.onChange(e)}
+              name="textTwo"
+              required={true}
+              placeholder="Option two"
+              value={this.state.textTwo}
+            ></input>
+            <button type="submit">Add</button>
+          </form>
+        </div>
       </div>
     );
   }
