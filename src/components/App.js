@@ -5,6 +5,7 @@ import LoadingBar from "react-redux-loading";
 // Importing components
 import Home from "./Home";
 import AddQuestion from "./AddQuestion";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends React.Component {
     ) : (
       <div>
         <LoadingBar />
+        <LeaderBoard />
         <AddQuestion />
         <Home />
       </div>

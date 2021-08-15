@@ -15,8 +15,8 @@ export function chosenAnswer(question, authedUser) {
 
 /**
  * Function to find how much votes certain option got
- * @param {String} option - "optionOne" or "optionTwo"
- * @param {Object} question - Should be Object containing the question data
+ * @param {string} option - "optionOne" or "optionTwo"
+ * @param {object} question - Should be Object containing the question data
  * @returns - Score shape example "1/3"
  */
 export function optionScore(option, question) {
@@ -24,4 +24,14 @@ export function optionScore(option, question) {
     question.optionOne.votes.length + question.optionTwo.votes.length;
   const optionVotes = question[option].votes.length;
   return `${optionVotes}/${totalVotes}`;
+}
+
+/**
+ * Function to calculate user score
+ * @param {object} user - User object containing answers,questions ids
+ * @returns {string} userScore
+ */
+export function userScore(user) {
+  const totalScore = Object.keys(user.answers).length + user.questions.length;
+  return totalScore;
 }
