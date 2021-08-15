@@ -1,14 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
+import { chosenAnswer } from "../helpers/helpers";
+
 function NotAnsList(props) {
-  const { questionsIds } = props;
+  const { notAnsweredQuestionsIds } = props;
   return (
     <div className="container">
       <ul>
-        {questionsIds.map((id) => (
+        {notAnsweredQuestionsIds.map((id) => (
           <li key={id}>
-            <Question id={id} answered={false} />
+            <Question id={id} />
           </li>
         ))}
       </ul>
@@ -17,9 +19,12 @@ function NotAnsList(props) {
 }
 
 function mapStateToProps(state) {
-  const questionsIds = Object.keys(state.questions).sort(
-    (a, b) => state.questions[b].timestamp - state.questions[a].timestamp
-  );
-  return { questionsIds };
+  const notAnsweredQuestionsIds = Object.keys(state.questions)
+    .filter((id) => chosenAnswer(state.questions[id], state.authedUser))
+    .sort(
+      (a, b) => state.questions[b].timestamp - state.questions[a].timestamp
+    );
+
+  return { notAnsweredQuestionsIds };
 }
 export default connect(mapStateToProps)(NotAnsList);

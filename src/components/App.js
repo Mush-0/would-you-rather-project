@@ -7,8 +7,9 @@ import Home from "./Home";
 
 class App extends React.Component {
   componentDidMount() {
-    // todo: grab authed user
-    const hardAuthedUser = "tylermcginnis";
+    // todo: grab authed
+    const users = ["tylermcginnis", "johndoe", "sarahedo"];
+    const hardAuthedUser = users[0];
     // todo: remove hard coded authed user
     this.props.dispatch(handleInitialReceive(hardAuthedUser));
   }

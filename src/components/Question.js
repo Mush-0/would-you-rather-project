@@ -1,13 +1,36 @@
 import React from "react";
 import { connect } from "react-redux";
+import { chosenAnswer, optionScore } from "../helpers/helpers";
 
 function Question(props) {
-  const { answered, id, theAuthor, theQuestion } = props;
+  const { id, theAuthor, theQuestion, authedUser } = props;
   const { name, avatarURL } = theAuthor;
   const { optionOne, optionTwo } = theQuestion;
-  console.log(name, avatarURL, optionOne, optionTwo);
+  const userAnswer = chosenAnswer(theQuestion, authedUser);
+  console.log(theQuestion);
   //   optOne,optTwo shape {text: "", votes: [userIds]}
-  return <div className="container">HELLO</div>;
+  return (
+    <div className="bordered-container container">
+      <h3 className="center">Would you rather?...</h3>
+      <img
+        className="avatar"
+        alt="Author avatar"
+        src={theAuthor.avatarURL}
+      ></img>
+      <p className={userAnswer === "optionOne" ? "marked option" : "option"}>
+        {theQuestion.optionOne.text}
+      </p>
+      {userAnswer && (
+        <span> score {optionScore("optionOne", theQuestion)}</span>
+      )}
+      <p className={userAnswer === "optionTwo" ? "marked option" : "option"}>
+        {theQuestion.optionTwo.text}
+      </p>
+      {userAnswer && (
+        <span> score: {optionScore("optionTwo", theQuestion)}</span>
+      )}
+    </div>
+  );
 }
 
 function mapStateToProps(state, ownProps) {
@@ -18,6 +41,7 @@ function mapStateToProps(state, ownProps) {
   return {
     theAuthor,
     theQuestion,
+    authedUser: state.authedUser,
   };
 }
 export default connect(mapStateToProps)(Question);

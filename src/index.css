@@ -26,7 +26,14 @@ a {
   margin: 0 auto;
   padding: 10px;
 }
-
+/* todo: better marked properties */
+.marked {
+  font-weight: bold;
+  color: darkred;
+}
+.option:hover {
+  cursor: pointer;
+}
 .btn {
   text-transform: uppercase;
   margin: 35px auto;
@@ -44,7 +51,7 @@ a {
   text-decoration: none;
 }
 
-.btn:focus {
+.active {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
@@ -54,10 +61,6 @@ a {
 }
 .center {
   text-align: center;
-}
-
-.active {
-  font-weight: bold;
 }
 
 .nav ul {
