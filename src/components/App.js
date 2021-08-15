@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
+import { handleInitialReceive } from "../actions/shared";
+import LoadingBar from "react-redux-loading";
+// Importing components
+import Home from "./Home";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    // todo: grab authed user
+    const hardAuthedUser = "tylermcginnis";
+    // todo: remove hard coded authed user
+    this.props.dispatch(handleInitialReceive(hardAuthedUser));
+  }
+  render() {
+    return !this.props.logged ? (
+      <div>
+        <LoadingBar />
+        <h1>NOT LOGGED</h1>
+      </div>
+    ) : (
+      <div>
+        <LoadingBar />
+        <Home />
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  const logged = state.authedUser === "" ? false : true;
+  return { logged };
+}
+export default connect(mapStateToProps)(App);
