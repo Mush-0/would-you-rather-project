@@ -24,7 +24,6 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container">
-        {console.log(this.state.active)}
         <nav className="nav"></nav>
         <div className="container">
           <div className="center">

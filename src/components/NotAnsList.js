@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import Question from "./Question";
+import NotAnsQuestion from "./NotAnsQuestion";
+// import Question from "./Question";
 import { chosenAnswer } from "../helpers/helpers";
 
 function NotAnsList(props) {
@@ -10,7 +11,7 @@ function NotAnsList(props) {
       <ul>
         {notAnsweredQuestionsIds.map((id) => (
           <li key={id}>
-            <Question id={id} />
+            <NotAnsQuestion id={id} />
           </li>
         ))}
       </ul>
@@ -20,7 +21,7 @@ function NotAnsList(props) {
 
 function mapStateToProps(state) {
   const notAnsweredQuestionsIds = Object.keys(state.questions)
-    .filter((id) => chosenAnswer(state.questions[id], state.authedUser))
+    .filter((id) => !chosenAnswer(state.questions[id], state.authedUser))
     .sort(
       (a, b) => state.questions[b].timestamp - state.questions[a].timestamp
     );

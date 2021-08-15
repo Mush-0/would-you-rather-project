@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import Question from "./Question";
+import AnsQuestion from "./AnsQuestion";
+// import Question from "./Question";
 import { chosenAnswer } from "../helpers/helpers";
 
 function AnsList(props) {
@@ -10,7 +11,7 @@ function AnsList(props) {
       <ul>
         {answeredQuestionsIds.map((id) => (
           <li key={id}>
-            <Question id={id} />
+            <AnsQuestion id={id} />
           </li>
         ))}
       </ul>
@@ -20,7 +21,7 @@ function AnsList(props) {
 
 function mapStateToProps(state) {
   const answeredQuestionsIds = Object.keys(state.questions)
-    .filter((id) => !chosenAnswer(state.questions[id], state.authedUser))
+    .filter((id) => chosenAnswer(state.questions[id], state.authedUser))
     .sort(
       (a, b) => state.questions[b].timestamp - state.questions[a].timestamp
     );

@@ -1,7 +1,5 @@
 // Function to get which answer the authedUser has choosen
 /**
- *
- *
  * @returns - "optionOne"|"optionTwo"|null
  */
 export function chosenAnswer(question, authedUser) {
