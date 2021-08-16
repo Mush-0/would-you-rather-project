@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import AnsQuestion from "./AnsQuestion";
 // import Question from "./Question";
 import { chosenAnswer } from "../helpers/helpers";
+import { Link } from "react-router-dom";
 
 function AnsList(props) {
   const { answeredQuestionsIds } = props;
@@ -11,7 +12,9 @@ function AnsList(props) {
       <ul>
         {answeredQuestionsIds.map((id) => (
           <li key={id}>
-            <AnsQuestion id={id} />
+            <Link to={"/questions/" + id}>
+              <AnsQuestion id={id} />
+            </Link>
           </li>
         ))}
       </ul>

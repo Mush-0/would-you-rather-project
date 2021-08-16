@@ -4,7 +4,7 @@ function PageNotFound(props) {
     <div>
       <h1 className="center">Page not found</h1>
       <h3>
-        Please back to <Link to="/">home</Link> page
+        Please back to <Link to="/">home page</Link>
       </h3>
     </div>
   );

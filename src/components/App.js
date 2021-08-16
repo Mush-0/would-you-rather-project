@@ -38,9 +38,12 @@ class App extends React.Component {
             <Route path="/" exact>
               {this.props.logged ? <Home /> : <Login />}
             </Route>
-            <Route path="/questions/:id">
-              {this.props.logged ? <CheckQuestion /> : <Login />}
-            </Route>
+            <Route
+              path="/questions/:id"
+              component={this.props.logged ? CheckQuestion : Login}
+            />
+            {/* todo: remove the ! */}
+
             <Route path="/pagenotfound">
               <PageNotFound />
             </Route>

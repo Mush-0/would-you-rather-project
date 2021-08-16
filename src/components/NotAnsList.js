@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import NotAnsQuestion from "./NotAnsQuestion";
 // import Question from "./Question";
 import { chosenAnswer } from "../helpers/helpers";
+import { Link } from "react-router-dom";
 
 function NotAnsList(props) {
   const { notAnsweredQuestionsIds } = props;
@@ -11,7 +12,9 @@ function NotAnsList(props) {
       <ul>
         {notAnsweredQuestionsIds.map((id) => (
           <li key={id}>
-            <NotAnsQuestion id={id} />
+            <Link to={"/questions/" + id}>
+              <NotAnsQuestion id={id} />
+            </Link>
           </li>
         ))}
       </ul>

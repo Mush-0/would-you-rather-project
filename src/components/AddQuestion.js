@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
+import { withRouter } from "react-router";
+
 class AddQuestion extends React.Component {
   state = { textOne: "", textTwo: "" };
   dispatch = this.props.dispatch;
@@ -16,6 +18,7 @@ class AddQuestion extends React.Component {
         this.props.authedUser
       )
     );
+    this.props.history.push("/");
   }
   render() {
     return (
@@ -54,4 +57,4 @@ class AddQuestion extends React.Component {
 function mapStateToProps(state) {
   return { authedUser: state.authedUser };
 }
-export default connect(mapStateToProps)(AddQuestion);
+export default connect(mapStateToProps)(withRouter(AddQuestion));
