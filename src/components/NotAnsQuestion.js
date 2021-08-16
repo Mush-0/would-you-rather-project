@@ -1,13 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { chosenAnswer, optionScore } from "../helpers/helpers";
+
 import { handleAnswerQuestion } from "../actions/questions";
 
 function NotAnsQuestion(props) {
   const { id, theAuthor, theQuestion, authedUser, dispatch } = props;
-  const { name, avatarURL } = theAuthor;
-  const { optionOne, optionTwo } = theQuestion;
-
   function chooseOption(e, answer) {
     e.preventDefault();
     dispatch(handleAnswerQuestion(authedUser, id, answer));

@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import { chosenAnswer, optionScore } from "../helpers/helpers";
 
 function AnsQuestion(props) {
-  const { id, theAuthor, theQuestion, authedUser, dispatch } = props;
-  const { name, avatarURL } = theAuthor;
-  const { optionOne, optionTwo } = theQuestion;
+  const { theAuthor, theQuestion, authedUser } = props;
+
   const userAnswer = chosenAnswer(theQuestion, authedUser);
 
   //   optOne,optTwo shape {text: "", votes: [userIds]}
@@ -21,20 +20,16 @@ function AnsQuestion(props) {
         <h2>Would you rather?...</h2>
 
         <p>
-          <span
-            className={userAnswer === "optionOne" ? "marked" : ""}
-          >
-            {theQuestion.optionOne.text + " "}
+          <span className={userAnswer === "optionOne" ? "marked" : ""}>
+            {theQuestion.optionOne.text + "   "}
           </span>
-          score {optionScore("optionOne", theQuestion)}
+          "Votes percent {optionScore("optionOne", theQuestion)}"
           <br />
           <br />
-          <span
-            className={userAnswer === "optionTwo" ? "marked" : ""}
-          >
-            {theQuestion.optionTwo.text + " "}
+          <span className={userAnswer === "optionTwo" ? "marked" : ""}>
+            {theQuestion.optionTwo.text + "   "}
           </span>
-          score: {optionScore("optionTwo", theQuestion)}
+          "Votes percent: {optionScore("optionTwo", theQuestion)}"
         </p>
       </div>
     </div>
