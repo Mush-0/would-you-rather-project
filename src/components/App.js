@@ -14,20 +14,21 @@ import CheckQuestion from "./CheckQuestion";
 
 class App extends React.Component {
   componentDidMount() {
-    // todo: grab authed
-    const users = ["tylermcginnis", "johndoe", "sarahedo"];
-    const hardAuthedUser = users[5] || "";
-    // todo: remove hard coded authed user
-    this.props.dispatch(handleInitialReceive(hardAuthedUser));
+    // Grab authedUser from session storage
+    const user = window.sessionStorage.getItem("AuthedUser") || "";
+    this.props.dispatch(handleInitialReceive(user));
   }
   render() {
     return (
       <div>
+        {this.props.logged &&
+          window.sessionStorage.setItem("AuthedUser", this.props.authedUser)}
         <div className="pages">
           <LoadingBar />
-          {this.props.logged && <NavMenu />}
+          {this.props.logged && this.props.loadedUsers && <NavMenu />}
           <Switch>
             {!this.props.logged && <Login />}
+            {!this.props.loadedUsers && <LoadingBar />}
             <Route path="/leaderboard">
               <LeaderBoard />
             </Route>
@@ -38,7 +39,6 @@ class App extends React.Component {
               <Home />
             </Route>
             <Route path="/questions/:id" component={CheckQuestion} />
-            {/* todo: remove the ! */}
             <Route path="/pagenotfound">
               <PageNotFound />
             </Route>
@@ -53,7 +53,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const authedUser = state.authedUser;
+  const loadedUsers = Object.keys(state.users).length !== 0;
   const logged = state.authedUser !== "" ? true : false;
-  return { logged };
+  return { logged, authedUser, loadedUsers };
 }
 export default connect(mapStateToProps)(App);

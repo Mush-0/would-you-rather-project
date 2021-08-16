@@ -14,7 +14,11 @@ function removeAuthedUser() {
 export function handleLogout() {
   return (dispatch) => {
     dispatch(showLoading());
-
+    try {
+      window.sessionStorage.removeItem("AuthedUser");
+    } catch (err) {
+      // Should log err if needed
+    }
     setTimeout(() => {
       dispatch(removeAuthedUser());
       dispatch(hideLoading());

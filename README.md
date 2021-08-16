@@ -49,7 +49,6 @@ You will also see any lint errors in the console.
 
 ## Future todos:
 
-- Make user data persistant through "session storage"
 - Add ability to add "new user"
 <hr>
 
@@ -70,3 +69,7 @@ I`m enthusiastic rising web developer on my learning journey, i enjoy writing co
 ## Found a bug/problem:
 
 You can [add issue](https://github.com/Mush-0/would-you-rather-project/issues) and i`ll be sure to fix as soon as possible
+
+## Change log
+
+16-Aug-2021: User ID now is persisted in session storage so refreshing the page in same tab wont need re-login

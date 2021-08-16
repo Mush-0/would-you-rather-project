@@ -6,6 +6,7 @@ function Login({ dispatch }) {
   function handleLogin(e) {
     e.preventDefault();
     const authedUser = e.target[0].value;
+    window.sessionStorage.setItem("AuthedUser", authedUser);
     e.target[0].value === "none"
       ? alert("Must choose user to continue!")
       : dispatch(handleInitialReceive(authedUser));
