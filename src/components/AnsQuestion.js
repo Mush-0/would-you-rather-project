@@ -10,21 +10,33 @@ function AnsQuestion(props) {
 
   //   optOne,optTwo shape {text: "", votes: [userIds]}
   return (
-    <div className="bordered-container container">
-      <h3 className="center">Would you rather?...</h3>
+    <div className="bordered medium-container flex-container ">
       <img
         className="avatar"
         alt="Author avatar"
         src={theAuthor.avatarURL}
       ></img>
-      <p className={userAnswer === "optionOne" ? "marked option" : "option"}>
-        {theQuestion.optionOne.text}
-      </p>
-      <span> score {optionScore("optionOne", theQuestion)}</span>
-      <p className={userAnswer === "optionTwo" ? "marked option" : "option"}>
-        {theQuestion.optionTwo.text}
-      </p>
-      <span> score: {optionScore("optionTwo", theQuestion)}</span>
+
+      <div className="flex-container flex-column">
+        <h2>Would you rather?...</h2>
+
+        <p>
+          <span
+            className={userAnswer === "optionOne" ? "marked" : ""}
+          >
+            {theQuestion.optionOne.text + " "}
+          </span>
+          score {optionScore("optionOne", theQuestion)}
+          <br />
+          <br />
+          <span
+            className={userAnswer === "optionTwo" ? "marked" : ""}
+          >
+            {theQuestion.optionTwo.text + " "}
+          </span>
+          score: {optionScore("optionTwo", theQuestion)}
+        </p>
+      </div>
     </div>
   );
 }

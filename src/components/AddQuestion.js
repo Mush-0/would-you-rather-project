@@ -24,7 +24,7 @@ class AddQuestion extends React.Component {
     return (
       <div>
         <h1 className="center">Add new question</h1>
-        <div className="container bordered-container">
+        <div className="container bordered">
           <h3 className="center">Would you rather?...</h3>
           <form
             onSubmit={(e) => {
@@ -39,6 +39,7 @@ class AddQuestion extends React.Component {
               required={true}
               placeholder="Option one"
             ></input>
+            <br />
             <input
               onChange={(e) => this.onChange(e)}
               name="textTwo"
@@ -46,7 +47,10 @@ class AddQuestion extends React.Component {
               placeholder="Option two"
               value={this.state.textTwo}
             ></input>
-            <button type="submit">Add</button>
+            <br />
+            <button className="btn" type="submit">
+              Add
+            </button>
           </form>
         </div>
       </div>

@@ -9,9 +9,9 @@ function NotAnsList(props) {
   const { notAnsweredQuestionsIds } = props;
   return (
     <div className="container">
-      <ul>
+      <ul className="flex-container flex-column">
         {notAnsweredQuestionsIds.map((id) => (
-          <li key={id}>
+          <li className="medium-container" key={id}>
             <Link to={"/questions/" + id}>
               <NotAnsQuestion id={id} />
             </Link>

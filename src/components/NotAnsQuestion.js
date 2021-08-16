@@ -8,25 +8,37 @@ function NotAnsQuestion(props) {
   const { name, avatarURL } = theAuthor;
   const { optionOne, optionTwo } = theQuestion;
 
-  function chooseOption(answer) {
+  function chooseOption(e, answer) {
+    e.preventDefault();
     dispatch(handleAnswerQuestion(authedUser, id, answer));
   }
   //   optOne,optTwo shape {text: "", votes: [userIds]}
   return (
-    <div className="bordered-container container">
-      <h3 className="center">Would you rather?...</h3>
+    <div className="bordered medium-container flex-container">
       <img
         className="avatar"
         alt="Author avatar"
         src={theAuthor.avatarURL}
       ></img>
-      <p onClick={(e) => chooseOption("optionOne")} className="option">
-        {theQuestion.optionOne.text}
-      </p>
-
-      <p onClick={(e) => chooseOption("optionTwo")} className="option">
-        {theQuestion.optionTwo.text}
-      </p>
+      <div className="flex-container flex-column">
+        <h2>Would you rather?...</h2>
+        <p>
+          <span
+            onClick={(e) => chooseOption(e, "optionOne")}
+            className="choose"
+          >
+            {theQuestion.optionOne.text}
+          </span>
+          <br />
+          <br />
+          <span
+            onClick={(e) => chooseOption(e, "optionTwo")}
+            className="choose"
+          >
+            {theQuestion.optionTwo.text}
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

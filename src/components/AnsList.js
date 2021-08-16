@@ -9,9 +9,9 @@ function AnsList(props) {
   const { answeredQuestionsIds } = props;
   return (
     <div className="container">
-      <ul>
+      <ul className="flex-container flex-column">
         {answeredQuestionsIds.map((id) => (
-          <li key={id}>
+          <li className="medium-container" key={id}>
             <Link to={"/questions/" + id}>
               <AnsQuestion id={id} />
             </Link>

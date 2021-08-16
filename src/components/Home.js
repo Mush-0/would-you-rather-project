@@ -45,7 +45,7 @@ class Home extends React.Component {
             >
               Answered
             </button>
-            <div className="bordered-container">
+            <div className="bordered">
               {this.state.active === "NotAnsList" ? (
                 <NotAnsList />
               ) : (

@@ -11,24 +11,28 @@ function Login({ dispatch }) {
       : dispatch(handleInitialReceive(authedUser));
   }
   return (
-    <div className="fit-container bordered-container">
-      <h3 className="center">Please Login to continue</h3>
-      <form
-        className="center"
-        onSubmit={(e) => {
-          handleLogin(e);
-        }}
-      >
-        <select defaultValue="none">
-          <option value="none" disabled hidden>
-            Please Choose a user
-          </option>
-          <option>tylermcginnis</option>
-          <option>sarahedo</option>
-          <option>johndoe</option>
-        </select>
-        <button type="submit">login</button>
-      </form>
+    <div className="center-container">
+      <div className="fit-container bordered">
+        <h3 className="center">Please Login to continue</h3>
+        <form
+          className="center"
+          onSubmit={(e) => {
+            handleLogin(e);
+          }}
+        >
+          <select defaultValue="none">
+            <option value="none" disabled hidden>
+              Please Choose a user
+            </option>
+            <option>tylermcginnis</option>
+            <option>sarahedo</option>
+            <option>johndoe</option>
+          </select>
+          <button className="btn-login" type="submit">
+            login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

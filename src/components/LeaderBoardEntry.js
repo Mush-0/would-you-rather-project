@@ -5,12 +5,14 @@ function LeaderBoardEntry({ user }) {
   const totalUserQuestions = user.questions.length;
   const totalUserAnswers = Object.keys(user.answers).length;
   return (
-    <div className="bordered-container container ">
+    <div className="bordered medium-container flex-container ">
       <img className="avatar" alt="user avatar" src={user.avatarURL}></img>
       <h4>{user.name}</h4>
       <p>Add Questions: {totalUserQuestions}</p>
       <p>Answered Questions: {totalUserAnswers}</p>
-      <p>Total score: {totalUserQuestions + totalUserAnswers}</p>
+      <p className="score">
+        Total score: {totalUserQuestions + totalUserAnswers}
+      </p>
     </div>
   );
 }

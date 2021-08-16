@@ -7,9 +7,9 @@ function LeaderBoard({ usersIds }) {
   return (
     <div>
       <h1 className="center">LeaderBoard</h1>
-      <ul className="container bordered-container">
+      <ul className="container bordered flex-container flex-column">
         {usersIds.map((id) => (
-          <li key={id}>
+          <li className="large-container" key={id}>
             <LeaderBoardEntry id={id} />
           </li>
         ))}

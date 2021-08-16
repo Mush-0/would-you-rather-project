@@ -4,26 +4,29 @@ import { handleLogout } from "../actions/authedUser";
 import { NavLink } from "react-router-dom";
 function NavMenu({ dispatch, userName }) {
   function logOut() {
-    dispatch(handleLogout());
+    const x = window.confirm("Are you sure you want to log out ?");
+    x && dispatch(handleLogout());
   }
   return (
-    <div className="bordered-container">
-      <div className="nav">
-        <NavLink to="/" activeClassName="active">
-          Home
+    <nav className="nav bordered ">
+      <ul className="fit-container">
+        <NavLink exact to="/" activeClassName="active">
+          <li>Home</li>
         </NavLink>
         <NavLink to="/add" activeClassName="active">
-          Add Question
+          <li>Add Question</li>
         </NavLink>
         <NavLink to="/leaderboard" activeClassName="active">
-          LeaderBoard
+          <li>LeaderBoard</li>
         </NavLink>
-      </div>
-      <div className="nav" data-role="login/logout">
-        <div>UserName: {userName}</div>
-        <div onClick={(e) => logOut()}>logout</div>
-      </div>
-    </div>
+      </ul>
+      <ul className="fit-container" data-role="login/logout">
+        <li>UserName: {userName}</li>
+        <li className="logout" onClick={(e) => logOut()}>
+          logout
+        </li>
+      </ul>
+    </nav>
   );
 }
 function mapStateToProps(state) {
