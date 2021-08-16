@@ -1,7 +1,5 @@
 # Would You Rather?
 
-## What is this App about:
-
 The App breif idea is to ask the user some simple "Would you rather?" questions and compare it with other users result.
 
 The uest must login first to see the app features which are listed below
