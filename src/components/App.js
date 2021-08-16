@@ -27,23 +27,18 @@ class App extends React.Component {
           <LoadingBar />
           {this.props.logged && <NavMenu />}
           <Switch>
+            {!this.props.logged && <Login />}
             <Route path="/leaderboard">
-              {this.props.logged ? <LeaderBoard /> : <Login />}
+              <LeaderBoard />
             </Route>
-
             <Route path="/add">
-              {this.props.logged ? <AddQuestion /> : <Login />}
+              <AddQuestion />
             </Route>
-
             <Route path="/" exact>
-              {this.props.logged ? <Home /> : <Login />}
+              <Home />
             </Route>
-            <Route
-              path="/questions/:id"
-              component={this.props.logged ? CheckQuestion : Login}
-            />
+            <Route path="/questions/:id" component={CheckQuestion} />
             {/* todo: remove the ! */}
-
             <Route path="/pagenotfound">
               <PageNotFound />
             </Route>
