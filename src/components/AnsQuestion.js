@@ -23,13 +23,13 @@ function AnsQuestion(props) {
           <span className={userAnswer === "optionOne" ? "marked" : ""}>
             {theQuestion.optionOne.text + "   "}
           </span>
-          "Votes percent {optionScore("optionOne", theQuestion)}"
+          "Result: {optionScore("optionOne", theQuestion)}"
           <br />
           <br />
           <span className={userAnswer === "optionTwo" ? "marked" : ""}>
             {theQuestion.optionTwo.text + "   "}
           </span>
-          "Votes percent: {optionScore("optionTwo", theQuestion)}"
+          "Result: {optionScore("optionTwo", theQuestion)}"
         </p>
       </div>
     </div>

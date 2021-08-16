@@ -23,7 +23,8 @@ export function optionScore(option, question) {
   const totalVotes =
     question.optionOne.votes.length + question.optionTwo.votes.length;
   const optionVotes = question[option].votes.length;
-  return `${optionVotes}/${totalVotes}`;
+  const votesPercent = parseInt((optionVotes / totalVotes) * 100);
+  return `${optionVotes}/${totalVotes} - ${votesPercent}%`;
 }
 
 /**

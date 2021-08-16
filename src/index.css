@@ -21,6 +21,7 @@ a {
 
 p {
   max-width: max-content;
+  text-align: center;
 }
 ul {
   padding-left: 0;
@@ -71,7 +72,7 @@ select {
   padding: 10px;
 }
 .medium-container {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   padding: 10px;
 }
